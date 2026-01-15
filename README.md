@@ -6,7 +6,7 @@ An AI-powered multi-agent system that automatically generates **100+ pieces of B
 ![CrewAI](https://img.shields.io/badge/CrewAI-1.3.0+-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-## 🎯 Overview
+## Overview
 
 This system transforms a simple product description into a comprehensive B2B content library:
 
@@ -19,31 +19,31 @@ This system transforms a simple product description into a comprehensive B2B con
 
 **Total Output: 100+ pieces of content** tailored to different customer personas and use cases.
 
-## 🏗️ Architecture
+## Architecture
 
 The system employs a **3-crew pipeline** with 10 specialized AI agents:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    CREW 1: Research & Planning                   │
+│                    CREW 1: Research & Planning                  │
 │  ┌─────────────┐  ┌─────────────────┐  ┌──────────────────┐     │
 │  │  Product    │  │    Persona      │  │    Content       │     │
 │  │  Analyst    │──│   Researcher    │──│   Strategist     │     │
 │  └─────────────┘  └─────────────────┘  └──────────────────┘     │
 └─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
+                                 │
+                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                   CREW 2: Content Generation                     │
+│                   CREW 2: Content Generation                    │
 │  ┌────────────┐ ┌─────────────┐ ┌───────────┐ ┌──────────────┐  │
 │  │Case Study  │ │White Paper  │ │Pitch Deck │ │Social Media  │  │
 │  │  Writer    │ │   Author    │ │ Designer  │ │ Specialist   │  │
 │  └────────────┘ └─────────────┘ └───────────┘ └──────────────┘  │
 └─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
+                                 │
+                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    CREW 3: Review & Polish                       │
+│                    CREW 3: Review & Polish                      │
 │  ┌─────────────┐  ┌─────────────────┐  ┌──────────────────┐     │
 │  │   Quality   │  │   Brand Voice   │  │      SEO         │     │
 │  │  Assurance  │──│    Guardian     │──│   Optimizer      │     │
@@ -66,7 +66,7 @@ The system employs a **3-crew pipeline** with 10 specialized AI agents:
 | | Brand Voice Guardian | Ensure brand consistency across all content |
 | | SEO Optimizer | Optimize for search visibility and readability |
 
-## ✨ Key Features
+## Key Features
 
 - **Multi-Provider LLM Support**: Automatic failover between Groq, Gemini, OpenAI, and Claude
 - **Human-in-the-Loop (HITL)**: 5 review checkpoints for human approval and feedback
@@ -74,7 +74,7 @@ The system employs a **3-crew pipeline** with 10 specialized AI agents:
 - **Intelligent Rate Limiting**: Built-in quota management for API calls
 - **Modular Architecture**: Each crew operates independently with clear interfaces
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -132,7 +132,7 @@ pricing, and any other relevant information.
    - `pitch_decks/` - Executive presentations
    - `social_media/` - Platform-ready posts
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 b2b-content-agent/
@@ -155,7 +155,7 @@ b2b-content-agent/
 └── requirements.txt
 ```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Component | Technology |
 |-----------|------------|
@@ -165,7 +165,7 @@ b2b-content-agent/
 | Configuration | YAML |
 | Package Management | pip, pyproject.toml |
 
-## 🧪 Testing
+## Testing
 
 ```bash
 # Run all tests
@@ -175,21 +175,21 @@ pytest tests/
 pytest tests/test_rate_limiter.py -v
 ```
 
-## 📊 Performance
+## Performance
 
 - **Average Runtime**: 15-30 minutes for full content generation
 - **API Calls**: ~150-200 calls per full run
 - **Cost**: ~$0.10-0.30 per run (varies by provider)
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built with [CrewAI](https://github.com/joaomdmoura/crewAI)
 - Multi-provider LLM support inspired by LangChain patterns
