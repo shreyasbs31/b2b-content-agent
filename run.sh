@@ -27,6 +27,10 @@ fi
 echo -e "${GREEN}✓${NC} Activating virtual environment..."
 source .venv/bin/activate
 
+# Add src to PYTHONPATH so modules can be imported
+export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
+echo -e "${GREEN}✓${NC} PYTHONPATH configured"
+
 # Check if input file exists
 if [ ! -f "input.txt" ]; then
     echo -e "${YELLOW}⚠️  No input.txt file found!${NC}"
@@ -110,7 +114,7 @@ if ls output/hitl/hitl_session_*.json 1> /dev/null 2>&1; then
     if [ "$choice" = "2" ]; then
         echo -e "${BLUE}🔄 Resuming session $session_id...${NC}"
         echo ""
-        python run_hitl.py --input-sources input.txt --resume "$session_id" --max-api-calls 200
+        python src/b2b_content_agent/hitl_flow.py --input-sources input.txt --resume "$session_id" --max-api-calls 200
     else
         echo -e "${GREEN}✓${NC} Starting fresh session with clean data..."
         echo ""
@@ -121,10 +125,10 @@ if ls output/hitl/hitl_session_*.json 1> /dev/null 2>&1; then
         mv output/hitl/hitl_session_*.json output/hitl/archive/ 2>/dev/null || true
         echo -e "${GREEN}✓${NC} Old sessions archived to output/hitl/archive/"
         echo ""
-        python run_hitl.py --input-sources input.txt --max-api-calls 200
+        python src/b2b_content_agent/hitl_flow.py --input-sources input.txt --max-api-calls 200
     fi
 else
     echo -e "${BLUE}🚀 Starting fresh session...${NC}"
     echo ""
-    python run_hitl.py --input-sources input.txt --max-api-calls 200
+    python src/b2b_content_agent/hitl_flow.py --input-sources input.txt --max-api-calls 200
 fi
