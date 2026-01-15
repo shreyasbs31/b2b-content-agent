@@ -10,12 +10,12 @@ An AI-powered multi-agent system that automatically generates **100+ pieces of B
 
 This system transforms a simple product description into a comprehensive B2B content library:
 
-| Content Type | Quantity | Word Count |
-|--------------|----------|------------|
-| Case Studies | 50 | 1,500-2,500 words each |
-| White Papers | 25 | 3,000-5,000 words each |
-| Pitch Decks | 10 | 10-15 slides each |
-| Social Posts | 25 | Platform-optimized |
+| Content Type | Quantity | Word Count             |
+| ------------ | -------- | ---------------------- |
+| Case Studies | 50       | 1,500-2,500 words each |
+| White Papers | 25       | 3,000-5,000 words each |
+| Pitch Decks  | 10       | 10-15 slides each      |
+| Social Posts | 25       | Platform-optimized     |
 
 **Total Output: 100+ pieces of content** tailored to different customer personas and use cases.
 
@@ -53,18 +53,18 @@ The system employs a **3-crew pipeline** with 10 specialized AI agents:
 
 ### Agent Responsibilities
 
-| Crew | Agent | Role |
-|------|-------|------|
-| **Crew 1** | Product Analyst | Extract product features, benefits, and competitive positioning |
-| | Persona Researcher | Identify 25 target customer personas with pain points |
-| | Content Strategist | Map content types to personas and create assignments |
-| **Crew 2** | Case Study Writer | Create compelling customer success stories |
-| | White Paper Author | Write authoritative thought leadership content |
-| | Pitch Deck Designer | Structure persuasive executive presentations |
-| | Social Media Specialist | Craft platform-optimized social content |
-| **Crew 3** | Quality Assurance | Review accuracy, completeness, and quality |
-| | Brand Voice Guardian | Ensure brand consistency across all content |
-| | SEO Optimizer | Optimize for search visibility and readability |
+| Crew       | Agent                   | Role                                                            |
+| ---------- | ----------------------- | --------------------------------------------------------------- |
+| **Crew 1** | Product Analyst         | Extract product features, benefits, and competitive positioning |
+|            | Persona Researcher      | Identify 25 target customer personas with pain points           |
+|            | Content Strategist      | Map content types to personas and create assignments            |
+| **Crew 2** | Case Study Writer       | Create compelling customer success stories                      |
+|            | White Paper Author      | Write authoritative thought leadership content                  |
+|            | Pitch Deck Designer     | Structure persuasive executive presentations                    |
+|            | Social Media Specialist | Craft platform-optimized social content                         |
+| **Crew 3** | Quality Assurance       | Review accuracy, completeness, and quality                      |
+|            | Brand Voice Guardian    | Ensure brand consistency across all content                     |
+|            | SEO Optimizer           | Optimize for search visibility and readability                  |
 
 ## Key Features
 
@@ -157,13 +157,13 @@ b2b-content-agent/
 
 ## Tech Stack
 
-| Component | Technology |
-|-----------|------------|
-| Agent Framework | CrewAI 1.3.0+ |
-| LLM Providers | Groq, Gemini, OpenAI, Claude |
-| Language | Python 3.11+ |
-| Configuration | YAML |
-| Package Management | pip, pyproject.toml |
+| Component          | Technology                   |
+| ------------------ | ---------------------------- |
+| Agent Framework    | CrewAI 1.3.0+                |
+| LLM Providers      | Groq, Gemini, OpenAI, Claude |
+| Language           | Python 3.11+                 |
+| Configuration      | YAML                         |
+| Package Management | pip, pyproject.toml          |
 
 ## Testing
 

@@ -38,7 +38,7 @@ hitl-run = "b2b_content_agent.run_hitl:main"
 content-agent = "src.main:main"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 # Core AI Framework
 crewai = { version = "^1.3.0", extras = ["google-genai"] }
 crewai-tools = "0.11.0"

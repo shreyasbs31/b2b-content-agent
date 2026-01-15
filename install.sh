@@ -7,40 +7,47 @@ echo "🚀 Building B2B Content Agent System..."
 echo ""
 
 # Check Python version
-PYTHON_VERSION=$(python --version 2>&1 | awk '{print $2}')
+PYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')
 echo "✓ Python version: $PYTHON_VERSION"
+
+# Verify Python 3.9+
+PYTHON_MAJOR=$(python3 --version 2>&1 | awk '{print $2}' | cut -d. -f1)
+PYTHON_MINOR=$(python3 --version 2>&1 | awk '{print $2}' | cut -d. -f2)
+
+if [ "$PYTHON_MAJOR" -lt 3 ] || ([ "$PYTHON_MAJOR" -eq 3 ] && [ "$PYTHON_MINOR" -lt 9 ]); then
+    echo "❌ Error: Python 3.9+ required (you have $PYTHON_VERSION)"
+    exit 1
+fi
+
+echo "✓ Python version compatible"
+echo ""
 
 # Check if in virtual environment
 if [[ -z "$VIRTUAL_ENV" ]]; then
-    echo "⚠️  Warning: Not in a virtual environment"
-    echo "   It's recommended to use a virtual environment"
-    echo ""
-    read -p "   Create .venv and continue? (y/n) " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        python -m venv .venv
-        source .venv/bin/activate
-        echo "✓ Virtual environment created and activated"
-    fi
+    echo "⚠️  Creating virtual environment..."
+    python3 -m venv .venv
+    source .venv/bin/activate
+    echo "✓ Virtual environment created and activated"
 else
-    echo "✓ Virtual environment: $VIRTUAL_ENV"
+    echo "✓ Using existing virtual environment: $VIRTUAL_ENV"
 fi
 
 echo ""
-echo "📦 Installing package in editable mode..."
-pip install -e . --quiet
+echo "📦 Upgrading pip, setuptools, and wheel..."
+pip install --upgrade pip setuptools wheel
+
+echo ""
+echo "📦 Installing dependencies from requirements.txt..."
+pip install -r requirements.txt
 
 echo ""
 echo "✅ Installation complete!"
 echo ""
-echo "📋 Available commands:"
-echo "   hitl-run          - Run HITL content generation pipeline"
-echo "   content-agent     - Main CLI entry point"
-echo ""
 echo "📖 Next steps:"
-echo "   1. Configure your .env file with GOOGLE_API_KEY"
-echo "   2. Read HITL_GUIDE.md for usage instructions"
-echo "   3. Run: hitl-run --help"
+echo "   1. Configure your .env file with API keys"
+echo "      GOOGLE_API_KEY (Gemini) or GROQ_API_KEY or OPENAI_API_KEY"
+echo "   2. Run the system:"
+echo "      ./run.sh"
 echo ""
 echo "🧪 To run tests:"
 echo "   pytest tests/ -v"
