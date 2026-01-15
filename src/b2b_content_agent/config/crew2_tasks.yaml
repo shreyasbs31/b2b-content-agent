@@ -1,0 +1,255 @@
+# CREW 2: Content Generation Tasks
+# These tasks run SEQUENTIALLY for reliable execution
+
+# =====================================================
+# TASK 4: Case Study Generation
+# =====================================================
+case_study_generation_task:
+  description: >
+    Generate compelling case studies (1,500-2,500 words) based on product analysis,
+    personas, and content strategy from CREW 1. Create customer success stories with
+    quantifiable results and realistic scenarios.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned case study content in the strategy
+    2. For each assigned persona, create a detailed case study that:
+       - Tells a compelling before/after transformation story
+       - Includes specific, realistic metrics and ROI data
+       - Features authentic-sounding customer quotes
+       - Addresses the persona's specific pain points
+       - Demonstrates clear product value
+    3. Use available tools to:
+       - Build narrative structure (problem-solution-results)
+       - Generate realistic data points and metrics
+       - Create authentic customer quotes
+       - Apply professional case study formatting
+    
+    **Case Study Structure:**
+    - Title and company overview
+    - The Challenge (problem state)
+    - The Solution (implementation)
+    - The Results (metrics and outcomes)
+    - Customer testimonial
+    - Conclusion and next steps
+    
+    **Quality Standards:**
+    - Realistic, not exaggerated metrics (30-50% improvements, not 10x)
+    - Authentic voice (sounds like real people, not marketing)
+    - Specific challenges (not vague problems)
+    - Clear ROI story with numbers
+    - Professional B2B formatting
+    
+    **Length:** 1,500-2,500 words per case study
+    **Tone:** Professional, authentic, results-focused
+  expected_output: >
+    One or more case study documents, each following this structure:
+    
+    # [Customer Company Name] Case Study
+    ## How [Company] Achieved [Result] with [Product]
+    
+    ### Executive Summary
+    [150-200 words with key highlights and results]
+    
+    ### Company Profile
+    - Industry: [Industry]
+    - Size: [Number of employees]
+    - Challenge: [Primary challenge]
+    - Solution: [Product/approach]
+    - Results: [Key metrics]
+    
+    ### The Challenge
+    [400-600 words describing the situation before, specific pain points, impact]
+    
+    ### The Solution
+    [400-600 words describing how the product was implemented and used]
+    
+    ### The Results
+    [400-500 words with specific metrics and outcomes]
+    
+    **Key Metrics:**
+    - [Metric 1 with percentage or number]
+    - [Metric 2 with percentage or number]
+    - [Metric 3 with percentage or number]
+    
+    ### Customer Testimonial
+    "[Realistic quote from the persona's perspective about the impact]"
+    
+    **— [Name], [Title] at [Company]**
+    
+    ### Conclusion
+    [200-300 words wrapping up the story and implications]
+    
+    Each case study should be save-ready for PDF export and client presentation.
+  agent: case_study_writer
+  output_file: output/case_studies/case_studies.md
+
+# =====================================================
+# TASK 5: White Paper Generation
+# =====================================================
+white_paper_generation_task:
+  description: >
+    Generate authoritative white papers (3,000-5,000 words) based on content strategy
+    assignments. Create thought leadership documents that educate, establish credibility,
+    and position the product as the solution.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned white paper content
+    2. For each assigned persona, create a comprehensive white paper that:
+       - Addresses industry challenges relevant to the persona
+       - Provides frameworks and methodologies
+       - Establishes thought leadership and authority
+       - Subtly positions the product as the solution
+       - Delivers genuine educational value
+    3. Use available tools to:
+       - Synthesize research and industry insights
+       - Build frameworks and best practices
+       - Structure content into logical chapters
+       - Apply professional white paper formatting
+    
+    **White Paper Structure:**
+    - Executive Summary
+    - Introduction (problem statement)
+    - Industry Analysis and Trends
+    - Framework or Methodology
+    - Best Practices and Implementation Guidance
+    - Solution Approach (subtle product positioning)
+    - Conclusion and Recommendations
+    - About the Company
+    
+    **Quality Standards:**
+    - Authoritative but accessible tone
+    - Data-driven with research citations
+    - Practical frameworks that readers can apply
+    - Educational focus (not just product pitch)
+    - Professional formatting with clear sections
+    - Visual guidance for charts/graphs (described, not created)
+    
+    **Length:** 3,000-5,000 words per white paper
+    **Tone:** Authoritative, educational, thought leadership
+  expected_output: >
+    One or more white paper documents, structured as comprehensive thought leadership pieces.
+    Each white paper should be professional, comprehensive, and save-ready for gated
+    content download or PDF distribution.
+  agent: white_paper_author
+  output_file: output/white_papers/white_papers.md
+
+# =====================================================
+# TASK 6: Pitch Deck Generation
+# =====================================================
+pitch_deck_generation_task:
+  description: >
+    Generate compelling pitch deck outlines (10-15 slides) based on content strategy
+    assignments. Create presentation structures that sales teams can use to close deals.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned pitch deck content
+    2. For each assigned persona, create a pitch deck outline that:
+       - Starts with the customer's problem (not the solution)
+       - Builds conviction through logical flow
+       - Addresses persona-specific pain points and goals
+       - Includes proof points and social proof
+       - Ends with clear CTA and next steps
+    3. Use available tools to:
+       - Generate slide outline and sequencing
+       - Craft value propositions
+       - Map data visualizations
+       - Apply pitch deck formatting
+    
+    **Pitch Deck Structure (10-15 slides):**
+    - Slide 1: Title
+    - Slide 2: The Problem
+    - Slide 3: Cost of Inaction
+    - Slides 4-5: The Solution
+    - Slide 6-7: How It Works / Benefits
+    - Slide 8: Proof Points / Social Proof
+    - Slide 9: Why Us / Differentiation
+    - Slide 10: Pricing/Investment
+    - Slide 11: Implementation
+    - Slide 12: Next Steps
+    
+    **Quality Standards:**
+    - Problem-first approach (not feature dump)
+    - Clear visual guidance for each slide
+    - Persona-specific messaging
+    - Logical, persuasive flow
+    - Actionable presenter notes
+    - Professional design specifications
+    
+    **Format:** Slide-by-slide outlines with content and design guidance
+    **Tone:** Confident, consultative, solution-focused
+  expected_output: >
+    One or more pitch deck outlines ready for designers/sales teams.
+    Each pitch deck should be ready for sales teams to customize and present.
+  agent: pitch_deck_designer
+  output_file: output/pitch_decks/pitch_decks.md
+
+# =====================================================
+# TASK 7: Social Media Content Generation
+# =====================================================
+social_media_generation_task:
+  description: >
+    Generate engaging social media posts (5-10 per persona) optimized for B2B platforms
+    like LinkedIn, Twitter, and Facebook. Create scroll-stopping content that drives
+    engagement and generates leads.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned social media content
+    2. For each assigned persona, create 5-10 social posts that:
+       - Address their specific pain points and interests
+       - Tell engaging stories or share valuable insights
+       - Drive engagement (likes, comments, shares)
+       - Include subtle CTAs for lead generation
+       - Vary in format and approach
+    3. Use available tools to:
+       - Generate attention-grabbing hooks
+       - Identify compelling story angles
+       - Research relevant hashtags
+       - Format for different platforms
+    
+    **Post Types to Include (vary across 5-10 posts):**
+    - Story post: Share a customer transformation story
+    - Insight post: Share a valuable tip or framework
+    - Stat post: Lead with surprising data or research
+    - Question post: Ask thought-provoking question
+    - List post: Share "X ways to..." or "X mistakes..."
+    - Behind-the-scenes: Show product development or team
+    - Thought leadership: Share perspective on industry trend
+    
+    **Quality Standards:**
+    - Authentic, conversational tone (not corporate-speak)
+    - Value-first approach (educate, don't sell)
+    - Strong hooks that stop the scroll
+    - Strategic use of line breaks for readability
+    - Relevant hashtags (3-5 per post)
+    - Clear but subtle CTA
+    - Platform-optimized formatting
+    
+    **Length:** 150-300 words per post
+    **Platforms:** LinkedIn (primary), Twitter, Facebook
+    **Tone:** Conversational, authentic, value-driven
+  expected_output: >
+    One or more social media content collections with 5-10 ready-to-publish posts.
+    Each social media collection should be ready for immediate scheduling and posting.
+  agent: social_media_specialist
+  output_file: output/social_media/social_posts.md
+

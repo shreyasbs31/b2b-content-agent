@@ -1,0 +1,12 @@
+Product: QuickNote AI
+
+QuickNote AI is a lightweight note-taking app with AI-powered organization. Perfect for students and professionals who need to capture ideas quickly.
+
+Key Features:
+- Voice-to-text notes
+- AI categorization
+- Cross-device sync
+- Smart search
+
+Pricing: $5/month or $50/year
+Target: Students, professionals, content creators

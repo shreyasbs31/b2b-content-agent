@@ -1,0 +1,162 @@
+# CREW 3 TASKS: Review & Polish Pipeline
+# These tasks run SEQUENTIALLY to ensure comprehensive quality review
+
+qa_review_task:
+  description: >
+    Review all generated content from CREW 2 for quality assurance. Check:
+    
+    1. **Accuracy & Claims Validation**
+       - Verify all metrics and statistics are realistic and properly contextualized
+       - Flag exaggerated or unsupported claims (e.g., "guaranteed", "always", "never")
+       - Ensure timeframes are realistic (not "overnight" or "instantly")
+       - Validate that ROI claims have appropriate qualifiers
+       - Check that product capabilities are accurately represented
+    
+    2. **Consistency & Style**
+       - Verify product names and terminology are used consistently
+       - Check formatting consistency (headings, bullets, structure)
+       - Ensure voice remains consistent throughout (not shifting between formal/casual)
+       - Validate that data points match across sections
+       - Check for passive voice overuse
+    
+    3. **Readability & Clarity**
+       - Calculate Flesch Reading Ease and Flesch-Kincaid Grade Level
+       - Identify overly complex sentences (>30 words)
+       - Check paragraph length and structure
+       - Assess jargon density for target audience
+       - Ensure clear logical flow between sections
+    
+    4. **CTAs & Links**
+       - Identify all calls-to-action in content
+       - Assess CTA effectiveness (clarity, placement, action-orientation)
+       - Check that CTAs align with content type and audience stage
+       - Validate reference and citation formatting
+       - Score CTA quality and suggest improvements
+    
+    **Input:** Content files from CREW 2 (case studies, white papers, pitch decks, social posts)
+    
+    **Output:** Comprehensive QA review report with:
+    - Accuracy assessment with flagged issues
+    - Consistency validation results
+    - Readability scores and analysis
+    - CTA effectiveness ratings
+    - Prioritized list of recommended fixes
+    - Overall quality score (0-100)
+    
+    Use all four QA tools systematically. Provide specific, actionable feedback with
+    examples. Flag critical issues that must be fixed vs. minor improvements.
+  expected_output: >
+    A detailed QA review report covering accuracy, consistency, readability, and
+    CTAs. Must include specific issues found, severity assessments (critical/moderate/minor),
+    concrete examples with corrected versions, and prioritized recommendations.
+    Report should be structured by content piece with clear quality scores and
+    actionable next steps.
+  agent: quality_assurance_reviewer
+  output_file: output/reviews/qa_review_report.md
+
+brand_review_task:
+  description: >
+    Review all content for brand voice consistency, messaging alignment, persona
+    relevance, and compliance. Check:
+    
+    1. **Tone & Voice Consistency**
+       - Analyze tone throughout content (professional, authoritative, approachable)
+       - Compare detected tone to target brand voice requirements
+       - Flag inappropriate language (overly casual, too enthusiastic, sales-y)
+       - Check for consistent emotional balance and confidence level
+       - Identify tone inconsistencies between sections
+    
+    2. **Messaging Alignment**
+       - Verify key messages from content strategy are present and emphasized
+       - Check that primary and secondary value propositions are covered
+       - Assess how well content addresses persona pain points
+       - Validate that outcomes align with stated goals
+       - Identify messaging gaps or weak value prop coverage
+    
+    3. **Persona Validation**
+       - Ensure content uses persona-specific language and context
+       - Verify examples and use cases match persona's situation
+       - Check that pain points are explicitly addressed
+       - Assess relevance to persona's role, industry, and company size
+       - Validate content meets brief requirements for persona targeting
+    
+    4. **Compliance Check**
+       - Flag absolute guarantees or unverifiable claims
+       - Identify regulated terminology (HIPAA, FDA, SEC, etc.)
+       - Check for required disclaimers based on industry
+       - Highlight potential legal risks
+       - Recommend legal review if critical issues found
+    
+    **Input:** Content files from CREW 2 + QA review report + content strategy from CREW 1
+    
+    **Output:** Comprehensive brand review report with:
+    - Tone consistency analysis and alignment score
+    - Messaging coverage assessment with gap identification
+    - Persona relevance validation and specificity score
+    - Compliance risk assessment with flagged issues
+    - Recommendations for brand/messaging improvements
+    - Overall brand alignment score (0-100)
+    
+    Use all four brand voice tools. Provide constructive feedback that maintains
+    core messages while improving brand consistency and persona fit.
+  expected_output: >
+    A detailed brand review report covering tone, messaging, persona alignment, and
+    compliance. Must include tone analysis with specific examples, messaging gap
+    identification, persona relevance assessment, compliance risk flagging with
+    severity levels, and prioritized recommendations. Report should indicate which
+    issues require immediate attention vs. minor refinements.
+  agent: brand_voice_guardian
+  output_file: output/reviews/brand_review_report.md
+
+seo_optimization_task:
+  description: >
+    Optimize all content for search visibility and conversion effectiveness. Perform:
+    
+    1. **Keyword Optimization**
+       - Analyze usage of primary and secondary keywords
+       - Check keyword density (target: 0.5-3% for primary keywords)
+       - Assess keyword placement in title, headings, intro, conclusion
+       - Identify keyword stuffing or under-optimization
+       - Suggest natural keyword variations and related terms
+    
+    2. **Metadata Generation**
+       - Generate 3 SEO-optimized meta title options (50-60 characters)
+       - Create 3 meta description options (150-160 characters)
+       - Suggest relevant tags (primary and secondary)
+       - Generate Open Graph and Twitter Card metadata
+       - Ensure primary keyword appears in titles and descriptions
+    
+    3. **CTA Enhancement**
+       - Identify existing CTAs and assess effectiveness
+       - Generate improved CTA wording options (primary and secondary)
+       - Recommend optimal CTA placement based on content type
+       - Suggest A/B testing variations
+       - Ensure CTAs align with user intent and content stage
+    
+    4. **Format Optimization**
+       - Analyze heading structure (H1, H2, H3 hierarchy)
+       - Check paragraph length and white space
+       - Suggest bullet points and visual elements
+       - Recommend scanability improvements
+       - Propose visual elements (charts, images, call-out boxes)
+    
+    **Input:** Content files from CREW 2 + QA and brand review reports
+    
+    **Output:** Comprehensive SEO optimization report with:
+    - Keyword analysis with usage scores and placement recommendations
+    - Complete metadata package ready for publication
+    - Enhanced CTA options with placement strategy
+    - Format optimization suggestions with rationale
+    - Overall SEO score (0-100) and optimization roadmap
+    
+    Use all four SEO tools to provide thorough optimization guidance. Focus on
+    practical improvements that will increase organic discovery and conversion.
+  expected_output: >
+    A detailed SEO optimization report covering keywords, metadata, CTAs, and
+    formatting. Must include keyword density analysis with recommendations, 3 options
+    each for meta titles and descriptions with character counts, enhanced CTA
+    variations with supporting text, format improvement suggestions with specific
+    examples, and complete metadata package. Report should be immediately actionable
+    with clear priorities.
+  agent: seo_optimizer
+  output_file: output/reviews/seo_optimization_report.md

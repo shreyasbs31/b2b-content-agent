@@ -1,0 +1,283 @@
+# CREW 1: Research & Planning Tasks Configuration
+# This file defines the tasks for the research and planning agents
+
+# =====================================================
+# TASK 1: Product Analysis
+# =====================================================
+product_analysis_task:
+  description: >
+    Perform comprehensive analysis of the product based on provided information sources.
+    
+    **Input Sources to Analyze:**
+    {input_sources}
+    
+    **Your Objectives:**
+    1. Extract ALL product information from provided sources (documents, URLs, raw text)
+    2. Identify and categorize:
+       - Product name and tagline
+       - Core features and capabilities
+       - Benefits and value propositions
+       - Use cases and applications
+       - Technical specifications
+       - Pricing information (if available)
+       - Target market indicators
+       - Competitive differentiators
+    3. Parse multiple formats: PDF, DOCX, TXT, URLs, plain text
+    4. Use web scraping for URLs to get complete product information
+    5. Cross-reference information from multiple sources to build a complete picture
+    6. Identify gaps in the provided information and note what's missing
+    
+    **Use Available Tools:**
+    - Document Parser: For PDF, DOCX, TXT, MD files
+    - Web Scraper: For analyzing product websites and landing pages
+    - Product Analyzer: For extracting structured data from raw content
+    - Competitor Analyzer: For competitive context
+    
+    **Quality Standards:**
+    - Be thorough and exhaustive in your analysis
+    - Extract exact quotes when relevant
+    - Cite sources for each piece of information
+    - Do not make assumptions - only report what you can verify
+    - If information conflicts across sources, note the discrepancy
+    - Organize information logically and clearly
+  expected_output: >
+    A comprehensive product intelligence report in the following structure:
+    
+    # PRODUCT INTELLIGENCE REPORT
+    
+    ## 1. PRODUCT OVERVIEW
+    - Name:
+    - Tagline/Description:
+    - Industry/Category:
+    - Company:
+    
+    ## 2. FEATURES & CAPABILITIES
+    (Detailed list with descriptions)
+    
+    ## 3. BENEFITS & VALUE PROPOSITIONS
+    (List of benefits with explanations)
+    
+    ## 4. USE CASES & APPLICATIONS
+    (Specific scenarios where the product solves problems)
+    
+    ## 5. TECHNICAL SPECIFICATIONS
+    (Any technical details, integrations, requirements)
+    
+    ## 6. TARGET MARKET INDICATORS
+    (Evidence of who the product is for)
+    
+    ## 7. PRICING & PACKAGING
+    (If available)
+    
+    ## 8. COMPETITIVE POSITIONING
+    (How it compares to alternatives, unique differentiators)
+    
+    ## 9. INFORMATION GAPS
+    (What information is missing or unclear)
+    
+    ## 10. SOURCE CITATIONS
+    (List of all sources analyzed)
+    
+    The report should be detailed, well-structured, and ready to be used by the
+    Persona Researcher for the next phase of analysis.
+  agent: product_analyst
+  output_file: output/01_product_analysis.md
+
+# =====================================================
+# TASK 2: Persona Identification & Profiling
+# =====================================================
+persona_identification_task:
+  description: >
+    Based on the product analysis, identify and profile the TOP 5-8 highest-priority
+    target personas who would benefit most from this product.
+    
+    **Context from Previous Task:**
+    You will receive the complete product intelligence report from the Product Analyst.
+    Use this as your foundation for persona development.
+    
+    **Your Objectives:**
+    1. Analyze product capabilities and identify WHO would benefit MOST from each feature
+    2. Focus on PRIMARY target market (not secondary/tertiary)
+    3. Create 5-8 diverse personas across:
+       - Different job roles (mix of ICs, managers, executives)
+       - Different company sizes (startup, SMB, mid-market, enterprise)
+       - 3-5 key industries maximum
+       - Different use cases (various ways to use the product)
+    4. For each persona, develop a complete profile including:
+       - Job title and seniority level
+       - Company context (size, industry, stage)
+       - Day-to-day responsibilities
+       - Key challenges and pain points
+       - Goals and success metrics
+       - Buying behavior and decision-making process
+       - How this product solves their specific problems
+       - Realistic quote or perspective
+    5. Ensure each persona is unique - avoid cookie-cutter profiles
+    6. Make personas realistic and believable, not generic archetypes
+    
+    **CRITICAL CONSTRAINT:**
+    - Generate EXACTLY 5-8 personas (not more!)
+    - Each persona profile should be ~500-800 words
+    - Target total document size: 25,000-40,000 characters
+    - Quality over quantity - focus on depth and strategic value
+    
+    **Quality Standards:**
+    - Each persona should feel like a real person you could interview
+    - Personas should be diverse in role, industry, and use case
+    - Pain points should be specific and relatable
+    - Value propositions should be tailored to each persona
+    - Prioritize personas with highest revenue potential
+    - Balance between depth (detailed profiles) and breadth (good variety)
+  expected_output: >
+    A focused persona library document (TARGET: 5-8 personas, 25K-40K chars total):
+    
+    # B2B PERSONA LIBRARY
+    
+    ## EXECUTIVE SUMMARY
+    - Total personas identified: [5-8]
+    - Primary target markets: [List]
+    - Industries covered: [3-5 max]
+    - Use case categories: [List]
+    
+    **IMPORTANT:** Generate EXACTLY 5-8 personas. No more, no less.
+    Document must stay under 40,000 characters to avoid truncation.
+    
+    ## PERSONA PROFILES
+    
+    For each persona (5-8 total), provide:
+    
+    ### Persona [#]: [Job Title]
+    
+    **Profile Overview:**
+    - Name: [Realistic name]
+    - Title: [Exact job title]
+    - Company: [Type/size/industry]
+    - Seniority: [Level]
+    
+    **Context:**
+    - Reports to: [Role]
+    - Team size: [Number]
+    - Key responsibilities: [List]
+    
+    **Challenges & Pain Points:**
+    - [3-5 specific challenges]
+    
+    **Goals & Success Metrics:**
+    - [What they're trying to achieve]
+    - [How they measure success]
+    
+    **Product Fit:**
+    - Primary use case: [How they'd use the product]
+    - Key features needed: [Specific features]
+    - Value proposition: [Why this product solves their problem]
+    - ROI/Impact: [Expected outcomes]
+    
+    **Buying Behavior:**
+    - Decision-making role: [Economic buyer, influencer, user, etc.]
+    - Purchase triggers: [What prompts them to buy]
+    - Evaluation criteria: [What matters most]
+    
+    **Quote:**
+    "[A realistic quote that captures their perspective on the problem and potential solution]"
+    
+    ---
+    
+    [Repeat for 5-8 personas total - NO MORE THAN 8!]
+    
+    ## PERSONA SEGMENTATION ANALYSIS
+    - Breakdown by role type (5-8 personas)
+    - Breakdown by industry (3-5 industries)
+    - Breakdown by company size
+    - Breakdown by use case
+    
+    **QUALITY CHECK:**
+    - Total personas: 5-8 ✓
+    - Total document size: Under 40,000 characters ✓
+    - Each persona unique and detailed ✓
+    
+    This persona library should be focused, actionable, and ready for content strategy.
+  agent: persona_researcher
+  context:
+    - product_analysis_task
+  output_file: output/02_persona_library.md
+
+# =====================================================
+# TASK 3: Content Strategy Development
+# =====================================================
+content_strategy_task:
+  description: >
+    Design a comprehensive content strategy that assigns personas to optimal
+    content types and creates high-level content briefs.
+    
+    **Context from Previous Tasks:**
+    You will receive:
+    1. Complete product intelligence report (from Product Analyst)
+    2. Full persona library with all identified personas (from Persona Researcher)
+    
+    **Your Objectives:**
+    1. Review personas (limit: top 3-5 personas only for quality)
+    2. For each persona, determine the best content type:
+       - Case Study: Proving ROI, real-world success
+       - White Paper: Thought leadership, technical depth
+       - Pitch Deck: Executive overview, quick intro
+       - Social Media: Awareness, engagement
+    3. Create a content assignment matrix (MAX 5 assignments)
+    4. Create BRIEF content guidelines (NOT full briefs - those come in CREW 2)
+    
+    **IMPORTANT CONSTRAINTS:**
+    - Focus on QUALITY over QUANTITY
+    - Maximum 5 content assignments (1 per persona)
+    - Keep content briefs concise (3-4 sentences each)
+    - Full detailed briefs will be created by CREW 2
+    
+    **Content Type Selection Criteria:**
+    
+    **Case Studies:** Best for ROI proof, technical/economic buyers, mid-late cycle
+    **White Papers:** Best for thought leadership, technical buyers, early-stage education
+    **Pitch Decks:** Best for executive overviews, C-suite, quick intros
+    **Social Media:** Best for awareness, all personas, top-of-funnel
+    
+    **Quality Standards:**
+    - Strategic fit between persona and content type
+    - Concise, actionable guidance (not full briefs)
+    - Diverse assignments (no two the same)
+    - Specific messaging per persona
+  expected_output: >
+    A concise content strategy document (MAX 2-3 pages):
+    
+    # CONTENT STRATEGY & ASSIGNMENT PLAN
+    
+    ## 1. STRATEGIC OVERVIEW
+    - Content objectives (3-4 sentences)
+    - Target audience summary (2-3 personas priority)
+    - Content mix rationale
+    
+    ## 2. CONTENT ASSIGNMENT MATRIX (MAX 5 ASSIGNMENTS)
+    
+    | # | Persona | Content Type | Priority | Rationale |
+    |---|---------|--------------|----------|-----------|
+    | 1 | [Name] | Case Study | High | [1-2 sentences why] |
+    | 2 | [Name] | White Paper | Medium | [1-2 sentences why] |
+    | 3 | [Name] | Pitch Deck | High | [1-2 sentences why] |
+    | 4 | [Name] | Social Media | Low | [1-2 sentences why] |
+    | 5 | [Name] | Case Study | Medium | [1-2 sentences why] |
+    
+    ## 3. CONTENT BRIEF GUIDELINES (1 paragraph each, MAX 5 briefs)
+    
+    ### Brief #1: [Content Type] for [Persona]
+    Target [persona name/title]. Focus on [pain point]. Highlight [value prop]. 
+    Use [tone]. Include [key element]. Expected outcome: [metric/goal].
+    
+    [Repeat for each assignment - keep each brief to 3-4 sentences max]
+    
+    ## 4. EXECUTION NOTES
+    - Phase 1: [Which briefs to prioritize]
+    - Quality considerations: [Key guidelines for CREW 2]
+    
+    Keep this document CONCISE - detailed briefs will be generated by CREW 2.
+    Focus on strategic direction, not exhaustive detail.
+  agent: content_strategist
+  context:
+    - product_analysis_task
+    - persona_identification_task
+  output_file: output/03_content_strategy.md

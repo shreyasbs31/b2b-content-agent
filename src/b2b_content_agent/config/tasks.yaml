@@ -1,0 +1,748 @@
+# CREW 1: Research & Planning Tasks Configuration
+# This file defines the tasks for the research and planning agents
+
+# =====================================================
+# TASK 1: Product Analysis
+# =====================================================
+product_analysis_task:
+  description: >
+    Perform comprehensive analysis of the product based on provided information sources.
+    
+    **Input Sources to Analyze:**
+    {input_sources}
+    
+    **Your Objectives:**
+    1. Extract ALL product information from provided sources (documents, URLs, raw text)
+    2. Identify and categorize:
+       - Product name and tagline
+       - Core features and capabilities
+       - Benefits and value propositions
+       - Use cases and applications
+       - Technical specifications
+       - Pricing information (if available)
+       - Target market indicators
+       - Competitive differentiators
+    3. Parse multiple formats: PDF, DOCX, TXT, URLs, plain text
+    4. Use web scraping for URLs to get complete product information
+    5. Cross-reference information from multiple sources to build a complete picture
+    6. Identify gaps in the provided information and note what's missing
+    
+    **Use Available Tools:**
+    - Document Parser: For PDF, DOCX, TXT, MD files
+    - Web Scraper: For analyzing product websites and landing pages
+    - Product Analyzer: For extracting structured data from raw content
+    - Competitor Analyzer: For competitive context
+    
+    **Quality Standards:**
+    - Be thorough and exhaustive in your analysis
+    - Extract exact quotes when relevant
+    - Cite sources for each piece of information
+    - Do not make assumptions - only report what you can verify
+    - If information conflicts across sources, note the discrepancy
+    - Organize information logically and clearly
+  expected_output: >
+    A comprehensive product intelligence report in the following structure:
+    
+    # PRODUCT INTELLIGENCE REPORT
+    
+    ## 1. PRODUCT OVERVIEW
+    - Name:
+    - Tagline/Description:
+    - Industry/Category:
+    - Company:
+    
+    ## 2. FEATURES & CAPABILITIES
+    (Detailed list with descriptions)
+    
+    ## 3. BENEFITS & VALUE PROPOSITIONS
+    (List of benefits with explanations)
+    
+    ## 4. USE CASES & APPLICATIONS
+    (Specific scenarios where the product solves problems)
+    
+    ## 5. TECHNICAL SPECIFICATIONS
+    (Any technical details, integrations, requirements)
+    
+    ## 6. TARGET MARKET INDICATORS
+    (Evidence of who the product is for)
+    
+    ## 7. PRICING & PACKAGING
+    (If available)
+    
+    ## 8. COMPETITIVE POSITIONING
+    (How it compares to alternatives, unique differentiators)
+    
+    ## 9. INFORMATION GAPS
+    (What information is missing or unclear)
+    
+    ## 10. SOURCE CITATIONS
+    (List of all sources analyzed)
+    
+    The report should be detailed, well-structured, and ready to be used by the
+    Persona Researcher for the next phase of analysis.
+  agent: product_analyst
+  output_file: output/01_product_analysis.md
+
+# =====================================================
+# TASK 2: Persona Identification & Profiling
+# =====================================================
+persona_identification_task:
+  description: >
+    Based on the product analysis, identify and profile all potential target personas
+    who could benefit from this product. Generate between 10-50 unique, detailed personas.
+    
+    **Context from Previous Task:**
+    You will receive the complete product intelligence report from the Product Analyst.
+    Use this as your foundation for persona development.
+    
+    **Your Objectives:**
+    1. Analyze product capabilities and identify WHO would benefit from each feature
+    2. Think broadly - consider primary, secondary, and tertiary markets
+    3. Create diverse personas across:
+       - Different job roles (individual contributors, managers, executives)
+       - Different company sizes (startup, SMB, mid-market, enterprise)
+       - Different industries (identify at least 5-10 relevant industries)
+       - Different use cases (various ways to use the product)
+    4. For each persona, develop a complete profile including:
+       - Job title and seniority level
+       - Company context (size, industry, stage)
+       - Day-to-day responsibilities
+       - Key challenges and pain points
+       - Goals and success metrics
+       - Buying behavior and decision-making process
+       - How this product solves their specific problems
+       - Realistic quote or perspective
+    5. Ensure each persona is unique - avoid cookie-cutter profiles
+    6. Make personas realistic and believable, not generic archetypes
+    
+    **Quality Standards:**
+    - Each persona should feel like a real person you could interview
+    - Personas should be diverse in role, industry, and use case
+    - Pain points should be specific and relatable
+    - Value propositions should be tailored to each persona
+    - Include both obvious and creative/lateral persona ideas
+    - Balance between depth (detailed profiles) and breadth (good variety)
+    
+    **Persona Count Guidelines:**
+    - Minimum: 10 personas (for simple products)
+    - Target: 20-30 personas (for most B2B products)
+    - Maximum: 50 personas (for complex, multi-use-case products)
+    
+    Choose the appropriate number based on product complexity and versatility.
+  expected_output: >
+    A comprehensive persona library document structured as follows:
+    
+    # B2B PERSONA LIBRARY
+    
+    ## EXECUTIVE SUMMARY
+    - Total personas identified: [Number]
+    - Primary target markets: [List]
+    - Industries covered: [List]
+    - Use case categories: [List]
+    
+    ## PERSONA PROFILES
+    
+    For each persona, provide:
+    
+    ### Persona [#]: [Job Title]
+    
+    **Profile Overview:**
+    - Name: [Realistic name]
+    - Title: [Exact job title]
+    - Company: [Type/size/industry]
+    - Seniority: [Level]
+    
+    **Context:**
+    - Reports to: [Role]
+    - Team size: [Number]
+    - Key responsibilities: [List]
+    
+    **Challenges & Pain Points:**
+    - [3-5 specific challenges]
+    
+    **Goals & Success Metrics:**
+    - [What they're trying to achieve]
+    - [How they measure success]
+    
+    **Product Fit:**
+    - Primary use case: [How they'd use the product]
+    - Key features needed: [Specific features]
+    - Value proposition: [Why this product solves their problem]
+    - ROI/Impact: [Expected outcomes]
+    
+    **Buying Behavior:**
+    - Decision-making role: [Economic buyer, influencer, user, etc.]
+    - Purchase triggers: [What prompts them to buy]
+    - Evaluation criteria: [What matters most]
+    
+    **Quote:**
+    "[A realistic quote that captures their perspective on the problem and potential solution]"
+    
+    ---
+    
+    [Repeat for each persona]
+    
+    ## PERSONA SEGMENTATION ANALYSIS
+    - Breakdown by role type
+    - Breakdown by industry
+    - Breakdown by company size
+    - Breakdown by use case
+    
+    This persona library should be rich, diverse, and ready to be used for targeted
+    content strategy development.
+  agent: persona_researcher
+  context:
+    - product_analysis_task
+  output_file: output/02_persona_library.md
+
+# =====================================================
+# TASK 3: Content Strategy Development
+# =====================================================
+content_strategy_task:
+  description: >
+    Design a comprehensive content strategy that assigns each persona to the optimal
+    content type and creates detailed content briefs for execution.
+    
+    **Context from Previous Tasks:**
+    You will receive:
+    1. Complete product intelligence report (from Product Analyst)
+    2. Full persona library with all identified personas (from Persona Researcher)
+    
+    **Your Objectives:**
+    1. Review all personas and product information
+    2. For each persona, determine the best content type(s):
+       - Case Study: Best for proving ROI, showing real-world success
+       - White Paper: Best for thought leadership, technical depth, education
+       - Pitch Deck: Best for executive overview, fundraising, partner pitches
+       - Social Media: Best for awareness, engagement, community building
+    3. Create a content assignment matrix mapping personas to content types
+    4. Ensure demographic diversity in content assignments
+    5. For bulk generation (e.g., 50 case studies), assign each to a different persona
+    6. Create detailed content briefs for each assignment including:
+       - Target persona
+       - Content type and format
+       - Key messages and angles
+       - Pain points to address
+       - Value propositions to highlight
+       - Tone and style guidelines
+       - Success metrics
+    7. Prioritize assignments based on strategic importance
+    8. Add variation to prevent repetitive content
+    
+    **Content Type Selection Criteria:**
+    
+    **Case Studies:** Best for:
+    - Proving ROI and business impact
+    - Building trust through customer success stories
+    - Demonstrating product in action
+    - Technical buyers and economic buyers
+    - Mid-to-late sales cycle content
+    
+    **White Papers:** Best for:
+    - Thought leadership and industry expertise
+    - Complex technical concepts
+    - Educational content for early-stage buyers
+    - Technical decision-makers and influencers
+    - Building credibility and authority
+    
+    **Pitch Decks:** Best for:
+    - Executive overviews and high-level positioning
+    - Investor and partner pitches
+    - Quick product introductions
+    - C-suite and senior leadership
+    - Board presentations and strategic planning
+    
+    **Social Media Content:** Best for:
+    - Awareness and top-of-funnel engagement
+    - Community building and thought leadership
+    - Quick tips and insights
+    - All personas (adapt message per persona)
+    - Ongoing relationship nurturing
+    
+    **Quality Standards:**
+    - Strategic fit between persona and content type
+    - Clear, actionable content briefs
+    - Diverse assignments (no two pieces should feel the same)
+    - Specific messaging tailored to each persona
+    - Realistic scope and objectives for each content piece
+    
+    **For Bulk Generation:**
+    If generating 50 case studies, for example:
+    - Assign each to a different persona (use all personas, repeat if needed)
+    - Vary the scenarios and outcomes
+    - Ensure industry diversity
+    - Mix company sizes and use cases
+    - Create different narrative structures
+  expected_output: >
+    A detailed content strategy document structured as follows:
+    
+    # CONTENT STRATEGY & ASSIGNMENT PLAN
+    
+    ## 1. STRATEGIC OVERVIEW
+    - Content objectives
+    - Target audience summary
+    - Content mix rationale
+    - Distribution and amplification plan
+    
+    ## 2. CONTENT ASSIGNMENT MATRIX
+    
+    | Persona # | Persona Name | Content Type | Priority | Rationale |
+    |-----------|--------------|--------------|----------|-----------|
+    | 1 | [Name/Title] | Case Study | High | [Why this pairing] |
+    | 2 | [Name/Title] | White Paper | Medium | [Why this pairing] |
+    | ... | ... | ... | ... | ... |
+    
+    ## 3. DETAILED CONTENT BRIEFS
+    
+    ### Content Brief [#]: [Content Type] for [Persona]
+    
+    **Assignment:**
+    - Persona: [#] - [Name/Title]
+    - Content Type: [Type]
+    - Priority: [High/Medium/Low]
+    - Word Count: [Target length]
+    
+    **Strategic Context:**
+    - Why this persona: [Explanation]
+    - Why this content type: [Explanation]
+    - Where in buyer journey: [Stage]
+    
+    **Key Messages:**
+    1. [Primary message]
+    2. [Secondary message]
+    3. [Supporting message]
+    
+    **Pain Points to Address:**
+    - [Specific pain point 1]
+    - [Specific pain point 2]
+    - [Specific pain point 3]
+    
+    **Value Propositions to Highlight:**
+    - [Value prop 1]
+    - [Value prop 2]
+    - [Value prop 3]
+    
+    **Required Elements:**
+    - [Must-have element 1]
+    - [Must-have element 2]
+    - [Must-have element 3]
+    
+    **Tone & Style:**
+    - Voice: [Professional/Conversational/Technical/etc.]
+    - Perspective: [First-person/Third-person/etc.]
+    - Technical level: [High/Medium/Low]
+    - Formality: [Formal/Semi-formal/Casual]
+    
+    **Success Metrics:**
+    - [How we'll measure effectiveness]
+    
+    **Unique Angle/Hook:**
+    - [What makes this piece stand out]
+    
+    ---
+    
+    [Repeat for each content assignment]
+    
+    ## 4. EXECUTION PRIORITIES
+    
+    **Phase 1 (High Priority):**
+    - [List of briefs to execute first]
+    
+    **Phase 2 (Medium Priority):**
+    - [List of briefs to execute second]
+    
+    **Phase 3 (Lower Priority):**
+    - [List of briefs to execute third]
+    
+    ## 5. QUALITY ASSURANCE CHECKLIST
+    - [ ] Demographic diversity across all content
+    - [ ] No repetitive angles or scenarios
+    - [ ] Clear differentiation between pieces
+    - [ ] Strategic content type selection
+    - [ ] Actionable briefs with sufficient detail
+    - [ ] Realistic scope and objectives
+    
+    ## 6. NOTES FOR CONTENT GENERATION CREW
+    - Special considerations
+    - Brand voice guidelines
+    - Things to avoid
+    - Additional context
+    
+    This strategy document should provide complete direction for the Content Generation
+    Crew (Crew 2) to execute without additional input.
+  agent: content_strategist
+  context:
+    - product_analysis_task
+    - persona_identification_task
+  output_file: output/03_content_strategy.md
+
+# =====================================================
+# CREW 2: Content Generation Tasks
+# These 4 tasks run in PARALLEL
+# =====================================================
+
+# =====================================================
+# TASK 4: Case Study Generation
+# =====================================================
+case_study_generation_task:
+  description: >
+    Generate compelling B2B case studies based on the content strategy and persona assignments
+    from CREW 1. Create 1,500-2,500 word customer success stories with quantifiable results.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned case study content
+    2. For each assigned persona, create a complete case study that:
+       - Tells a compelling story of transformation
+       - Addresses their specific pain points
+       - Showcases quantifiable results and ROI
+       - Includes realistic customer quotes
+       - Follows professional case study structure
+    3. Use available tools to:
+       - Build narrative structure (problem → solution → results)
+       - Extract and format key metrics and data points
+       - Generate authentic-sounding customer quotes
+       - Apply professional formatting
+    
+    **Case Study Structure:**
+    - Title: Compelling headline with result
+    - Executive Summary: 2-3 sentence overview
+    - Challenge: What problem the customer faced
+    - Solution: How the product was implemented
+    - Results: Quantifiable outcomes and ROI
+    - Testimonial: Direct quote from customer
+    - Company Profile: Brief background on the customer
+    
+    **Quality Standards:**
+    - Specific, quantifiable metrics (not vague claims)
+    - Realistic challenges that resonate with the persona
+    - Authentic quotes that sound like real people
+    - Professional tone but engaging narrative
+    - Clear before/after transformation
+    - Credible company details and context
+    
+    **Length:** 1,500-2,500 words per case study
+    **Tone:** Professional, credible, data-driven, compelling
+  expected_output: >
+    One or more case study documents (one per assigned persona), each structured as:
+    
+    # [Compelling Title with Result]
+    ## How [Company Name] [Achieved Specific Result] with [Product Name]
+    
+    ### Executive Summary
+    [2-3 sentences summarizing the transformation]
+    
+    ### Company Profile
+    - **Company:** [Name]
+    - **Industry:** [Industry]
+    - **Size:** [Employee count]
+    - **Location:** [Location]
+    - **Challenge:** [Brief description]
+    
+    ### The Challenge
+    [300-400 words describing the problem, context, and pain points]
+    
+    ### The Solution
+    [400-600 words describing how the product was implemented and used]
+    
+    ### The Results
+    [400-500 words with specific metrics and outcomes]
+    
+    **Key Metrics:**
+    - [Metric 1 with percentage or number]
+    - [Metric 2 with percentage or number]
+    - [Metric 3 with percentage or number]
+    
+    ### Customer Testimonial
+    "[Realistic quote from the persona's perspective about the impact]"
+    
+    **— [Name], [Title] at [Company]**
+    
+    ### Conclusion
+    [200-300 words wrapping up the story and implications]
+    
+    Each case study should be save-ready for PDF export and client presentation.
+  agent: case_study_writer
+  output_file: output/case_studies/case_studies.md
+  async_execution: true
+
+# =====================================================
+# TASK 5: White Paper Generation
+# =====================================================
+white_paper_generation_task:
+  description: >
+    Generate authoritative white papers (3,000-5,000 words) based on content strategy
+    assignments. Create thought leadership documents that educate, establish credibility,
+    and position the product as the solution.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned white paper content
+    2. For each assigned persona, create a comprehensive white paper that:
+       - Addresses industry challenges relevant to the persona
+       - Provides frameworks and methodologies
+       - Establishes thought leadership and authority
+       - Subtly positions the product as the solution
+       - Delivers genuine educational value
+    3. Use available tools to:
+       - Synthesize research and industry insights
+       - Build frameworks and best practices
+       - Structure content into logical chapters
+       - Apply professional white paper formatting
+    
+    **White Paper Structure:**
+    - Executive Summary
+    - Introduction (problem statement)
+    - Industry Analysis and Trends
+    - Framework or Methodology
+    - Best Practices and Implementation Guidance
+    - Solution Approach (subtle product positioning)
+    - Conclusion and Recommendations
+    - About the Company
+    
+    **Quality Standards:**
+    - Authoritative but accessible tone
+    - Data-driven with research citations
+    - Practical frameworks that readers can apply
+    - Educational focus (not just product pitch)
+    - Professional formatting with clear sections
+    - Visual guidance for charts/graphs (described, not created)
+    
+    **Length:** 3,000-5,000 words per white paper
+    **Tone:** Authoritative, educational, thought leadership
+  expected_output: >
+    One or more white paper documents (one per assigned persona), each structured as:
+    
+    # [White Paper Title: Industry Challenge or Solution]
+    
+    ## Executive Summary
+    [200-300 word overview of key insights and recommendations]
+    
+    ## 1. Introduction
+    [400-500 words framing the industry challenge and why it matters]
+    
+    ## 2. The Current Landscape
+    [600-800 words analyzing industry trends, data, and challenges]
+    
+    ## 3. Understanding the Root Causes
+    [500-700 words exploring why these challenges exist]
+    
+    ## 4. A Framework for Success
+    [700-900 words presenting methodology or approach]
+    
+    ## 5. Best Practices and Implementation
+    [700-900 words with actionable guidance]
+    
+    ## 6. The Path Forward
+    [400-600 words on solution approach, subtly mentioning product]
+    
+    ## 7. Conclusion
+    [300-400 words summarizing key takeaways and recommendations]
+    
+    ## About [Company Name]
+    [150-200 words on company background and expertise]
+    
+    Each white paper should be professional, comprehensive, and save-ready for gated
+    content download or PDF distribution.
+  agent: white_paper_author
+  output_file: output/white_papers/white_papers.md
+  async_execution: true
+
+# =====================================================
+# TASK 6: Pitch Deck Generation
+# =====================================================
+pitch_deck_generation_task:
+  description: >
+    Generate compelling pitch deck outlines (10-15 slides) based on content strategy
+    assignments. Create presentation structures that sales teams can use to close deals.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned pitch deck content
+    2. For each assigned persona, create a pitch deck outline that:
+       - Starts with the customer's problem (not the solution)
+       - Builds conviction through logical flow
+       - Addresses persona-specific pain points and goals
+       - Includes proof points and social proof
+       - Ends with clear CTA and next steps
+    3. Use available tools to:
+       - Generate slide outline and sequencing
+       - Craft compelling value propositions
+       - Identify data visualization needs
+       - Apply pitch deck best practices
+    
+    **Pitch Deck Structure (10-15 slides):**
+    1. Title/Hook Slide
+    2. Problem Statement (customer's challenge)
+    3. Impact/Cost of Problem
+    4. Solution Overview
+    5. How It Works (key features)
+    6. Value Propositions (benefits)
+    7. Proof Points (data, testimonials)
+    8. Customer Success Stories
+    9. Competitive Differentiation
+    10. Pricing and ROI
+    11. Implementation and Support
+    12. Next Steps and CTA
+    
+    **Quality Standards:**
+    - Clear, concise messaging (minimal text per slide)
+    - Logical flow that builds conviction
+    - Visual-first approach with descriptions
+    - Persona-specific pain points addressed
+    - Balance of emotion and logic
+    - Professional but not stuffy
+    
+    **Format:** Slide outline with talking points
+    **Tone:** Compelling, confident, consultative
+  expected_output: >
+    One or more pitch deck outlines (one per assigned persona), each structured as:
+    
+    # [Product Name] - Sales Deck for [Persona Title]
+    
+    ## Slide 1: Title Slide
+    **Visual:** [Product logo, compelling tagline]
+    **Content:** [Product Name] - [Compelling value proposition]
+    **Notes:** Open with confidence and establish credibility
+    
+    ## Slide 2: The Challenge
+    **Visual:** [Icon or image representing the problem]
+    **Content:**
+    - [Pain point 1 specific to persona]
+    - [Pain point 2 specific to persona]
+    - [Pain point 3 specific to persona]
+    **Notes:** Make the problem relatable and real for this persona
+    
+    ## Slide 3: The Cost of Inaction
+    **Visual:** [Chart showing impact]
+    **Content:**
+    - [Quantified cost or risk]
+    - [Time/productivity impact]
+    - [Competitive disadvantage]
+    **Notes:** Create urgency without being alarmist
+    
+    [Continue through all 10-15 slides with same format]
+    
+    ## Appendix: Supporting Data
+    - Additional proof points
+    - Detailed pricing breakdown
+    - Technical specifications
+    - References and case studies
+    
+    Each pitch deck should be ready for sales teams to customize and present.
+  agent: pitch_deck_designer
+  output_file: output/pitch_decks/pitch_decks.md
+  async_execution: true
+
+# =====================================================
+# TASK 7: Social Media Content Generation
+# =====================================================
+social_media_generation_task:
+  description: >
+    Generate engaging social media posts (5-10 per persona) optimized for B2B platforms
+    like LinkedIn, Twitter, and Facebook. Create scroll-stopping content that drives
+    engagement and generates leads.
+    
+    **Inputs You Will Receive:**
+    - Product intelligence report (from CREW 1)
+    - Persona library with detailed profiles (from CREW 1)
+    - Content strategy with persona-content assignments (from CREW 1)
+    
+    **Your Objectives:**
+    1. Identify which personas have been assigned social media content
+    2. For each assigned persona, create 5-10 social posts that:
+       - Address their specific pain points and interests
+       - Tell engaging stories or share valuable insights
+       - Drive engagement (likes, comments, shares)
+       - Include subtle CTAs for lead generation
+       - Vary in format and approach
+    3. Use available tools to:
+       - Generate attention-grabbing hooks
+       - Identify compelling story angles
+       - Research relevant hashtags
+       - Format for different platforms
+    
+    **Post Types to Include (vary across 5-10 posts):**
+    - Story post: Share a customer transformation story
+    - Insight post: Share a valuable tip or framework
+    - Stat post: Lead with surprising data or research
+    - Question post: Ask thought-provoking question
+    - List post: Share "X ways to..." or "X mistakes..."
+    - Behind-the-scenes: Show product development or team
+    - Thought leadership: Share perspective on industry trend
+    
+    **Quality Standards:**
+    - Authentic, conversational tone (not corporate-speak)
+    - Value-first approach (educate, don't sell)
+    - Strong hooks that stop the scroll
+    - Strategic use of line breaks for readability
+    - Relevant hashtags (3-5 per post)
+    - Clear but subtle CTA
+    - Platform-optimized formatting
+    
+    **Length:** 150-300 words per post
+    **Platforms:** LinkedIn (primary), Twitter, Facebook
+    **Tone:** Conversational, authentic, value-driven
+  expected_output: >
+    One or more social media content collections (one per assigned persona), structured as:
+    
+    # Social Media Content for [Persona Title]
+    
+    ## Post 1: Customer Success Story
+    **Platform:** LinkedIn
+    **Hook:** [Attention-grabbing first line]
+    **Body:**
+    [Engaging story with line breaks for readability]
+    
+    [Clear value or insight]
+    
+    [Subtle CTA]
+    **Hashtags:** #hashtag1 #hashtag2 #hashtag3
+    **Character Count:** [150-300]
+    
+    ---
+    
+    ## Post 2: Industry Insight
+    **Platform:** LinkedIn
+    **Hook:** [Thought-provoking opening]
+    **Body:**
+    [Valuable insight or tip]
+    
+    [Supporting explanation]
+    
+    [CTA or question for engagement]
+    **Hashtags:** #hashtag1 #hashtag2 #hashtag3
+    **Character Count:** [150-300]
+    
+    ---
+    
+    [Continue for 5-10 posts with variety]
+    
+    ## Content Calendar Suggestions
+    - Post 1: Monday (start week with inspiration)
+    - Post 2: Wednesday (mid-week value)
+    - Post 3: Friday (end week with insight)
+    - [etc.]
+    
+    ## Engagement Tips
+    - Respond to comments within 2 hours
+    - Ask follow-up questions to commenters
+    - Tag relevant industry influencers when appropriate
+    - Repurpose top-performing posts
+    
+    Each social media collection should be ready for immediate scheduling and posting.
+  agent: social_media_specialist
+  output_file: output/social_media/social_posts.md
+  async_execution: true
